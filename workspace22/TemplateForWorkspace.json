@@ -681,11 +681,94 @@
 					"saveOutput": true,
 					"synapse_widget": {
 						"version": "0.1",
-						"state": {}
+						"state": {
+							"bb63e71b-675b-4299-b1b7-66b907826657": {
+								"type": "Synapse.DataFrame",
+								"sync_state": {
+									"table": {
+										"rows": [
+											{
+												"AvgTripDistance": "2.955385293728598",
+												"passengerCount": "1",
+												"SumTripDistance": "4624873.580000002"
+											},
+											{
+												"AvgTripDistance": "3.0823106614325835",
+												"passengerCount": "6",
+												"SumTripDistance": "187660.31999999998"
+											},
+											{
+												"AvgTripDistance": "3.124120509875713",
+												"passengerCount": "3",
+												"SumTripDistance": "274744.52999999985"
+											},
+											{
+												"AvgTripDistance": "3.1096431007047065",
+												"passengerCount": "5",
+												"SumTripDistance": "314624.3600000001"
+											},
+											{
+												"AvgTripDistance": "6.23",
+												"passengerCount": "9",
+												"SumTripDistance": "49.84"
+											},
+											{
+												"AvgTripDistance": "3.132080374155551",
+												"passengerCount": "4",
+												"SumTripDistance": "126570.49999999999"
+											},
+											{
+												"AvgTripDistance": "7.831666666666666",
+												"passengerCount": "8",
+												"SumTripDistance": "46.989999999999995"
+											},
+											{
+												"AvgTripDistance": "2.382",
+												"passengerCount": "7",
+												"SumTripDistance": "11.91"
+											},
+											{
+												"AvgTripDistance": "3.198328131230063",
+												"passengerCount": "2",
+												"SumTripDistance": "1026740.0899999997"
+											},
+											{
+												"AvgTripDistance": "2.9365876998482907",
+												"passengerCount": "0",
+												"SumTripDistance": "50327.240000000005"
+											}
+										],
+										"schema": {
+											"passengerCount": "int",
+											"AvgTripDistance": "double",
+											"SumTripDistance": "double"
+										}
+									},
+									"isSummary": false,
+									"language": "scala"
+								},
+								"persist_state": {
+									"view": {
+										"type": "details",
+										"chartOptions": {
+											"chartType": "bar",
+											"aggregationType": "sum",
+											"categoryFieldKeys": [
+												"AvgTripDistance"
+											],
+											"seriesFieldKeys": [
+												"passengerCount"
+											],
+											"isStacked": false
+										}
+									}
+								}
+							}
+						}
 					},
 					"kernelspec": {
 						"name": "synapse_pyspark",
-						"display_name": "python"
+						"display_name": "Synapse PySpark"
 					},
 					"language_info": {
 						"name": "python"
@@ -702,15 +785,12 @@
 						"sparkVersion": "2.4",
 						"nodeCount": 3,
 						"cores": 4,
-						"memory": 28,
-						"automaticScaleJobs": false
-					},
-					"sessionKeepAliveTimeout": 30
+						"memory": 28
+					}
 				},
 				"cells": [
 					{
 						"cell_type": "markdown",
-						"metadata": {},
 						"source": [
 							"# Explore NYC Yellow Taxi Data using Spark\n",
 							"\n",
@@ -722,7 +802,6 @@
 					},
 					{
 						"cell_type": "markdown",
-						"metadata": {},
 						"source": [
 							"## Load Data\n",
 							"\n",
@@ -731,7 +810,6 @@
 					},
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"# Read NYC yellow cab data from Azure Open Datasets\n",
 							"from azureml.opendatasets import NycTlcYellow\n",
@@ -750,7 +828,6 @@
 					},
 					{
 						"cell_type": "markdown",
-						"metadata": {},
 						"source": [
 							"## Analyze the NYC Taxi data using Spark and notebooks\n",
 							""
@@ -758,7 +835,6 @@
 					},
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"df_nyc_tlc.printSchema()"
 						],
@@ -802,7 +878,6 @@
 					},
 					{
 						"cell_type": "markdown",
-						"metadata": {},
 						"source": [
 							"## Customize data visualization with Spark and notebooks\n",
 							"You can control how charts render by using notebooks. The following code shows a simple example. It uses the popular libraries matplotlib and seaborn. The code renders the same kind of line chart as the SQL queries we ran earlier.\n",
@@ -812,7 +887,6 @@
 					},
 					{
 						"cell_type": "code",
-						"metadata": {},
 						"source": [
 							"import matplotlib.pyplot\n",
 							"import seaborn\n",
@@ -828,7 +902,6 @@
 					},
 					{
 						"cell_type": "markdown",
-						"metadata": {},
 						"source": [
 							"## Clean up resources\n",
 							"To ensure the Spark instance is shut down, end any connected sessions(notebooks). The pool shuts down when the **idle time** specified in the Apache Spark pool is reached. You can also select **stop session** from the status bar at the upper right of the notebook.\n",
@@ -862,7 +935,8 @@
 				"metadata": {
 					"saveOutput": true,
 					"synapse_widget": {
-						"version": "0.1"
+						"version": "0.1",
+						"state": {}
 					},
 					"kernelspec": {
 						"name": "synapse_pyspark",
@@ -870,11 +944,13 @@
 					},
 					"language_info": {
 						"name": "python"
-					}
+					},
+					"sessionKeepAliveTimeout": 30
 				},
 				"cells": [
 					{
 						"cell_type": "code",
+						"metadata": {},
 						"source": [
 							""
 						],
@@ -897,6 +973,26 @@
 			},
 			"dependsOn": [],
 			"location": "eastus"
+		},
+		{
+			"name": "[concat(parameters('workspaceName'), '/SQL script 3')]",
+			"type": "Microsoft.Synapse/workspaces/sqlscripts",
+			"apiVersion": "2019-06-01-preview",
+			"properties": {
+				"content": {
+					"query": "\n-- Create new database\nCREATE DATABASE [Demo];\nGO\n\n-- There is no credential in data surce. We are using public storage account which doesn't need a secret.\nCREATE EXTERNAL DATA SOURCE AzureOpenData\nWITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')\n\n\nDROP VIEW IF EXISTS usPopulationView;\nGO\n\nCREATE VIEW usPopulationView AS\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',\n        DATA_SOURCE = 'AzureOpenData',\n        FORMAT='PARQUET'\n    ) AS uspv;",
+					"metadata": {
+						"language": "sql"
+					},
+					"currentConnection": {
+						"poolName": "Built-in",
+						"databaseName": "DWFede2"
+					},
+					"resultLimit": 5000
+				},
+				"type": "SqlQuery"
+			},
+			"dependsOn": []
 		}
 	]
 }
