@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 2",
+	"properties": {
+		"content": {
+			"query": " CREATE USER fede WITHOUT LOGIN\n\ngrant acc\n\nEXECUTE AS USER = 'fede' \n\nSELECT TOP (100) [ID]\n,[Name]\n FROM [Vendors22].[Fede];\n\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "wplussynapsedw",
+				"databaseName": "wplussynapsedw"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
