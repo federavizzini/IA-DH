@@ -1,0 +1,17 @@
+{
+	"name": "SQL script 3",
+	"properties": {
+		"content": {
+			"query": "\n-- Create new database\nCREATE DATABASE [Demo];\nGO\n\n-- There is no credential in data surce. We are using public storage account which doesn't need a secret.\nCREATE EXTERNAL DATA SOURCE AzureOpenData\nWITH ( LOCATION = 'https://azureopendatastorage.blob.core.windows.net/')\n\n\nDROP VIEW IF EXISTS usPopulationView;\nGO\n\nCREATE VIEW usPopulationView AS\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'censusdatacontainer/release/us_population_county/year=20*/*.parquet',\n        DATA_SOURCE = 'AzureOpenData',\n        FORMAT='PARQUET'\n    ) AS uspv;",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"poolName": "Built-in",
+				"databaseName": "DWFede2"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
